@@ -1,0 +1,11 @@
+<section fxLayout fxLayout.lt-md="column" fxLayoutGap="1rem">
+  <mat-card @fadeInOut fxFlex="1/heroes.length" *ngFor="let hero of heroes">
+    <mat-card-header>
+      <mat-card-title>{{hero.name}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="hero.img" alt="Photo of {{hero.name}}">
+    <mat-card-content>
+      <p>Hero ID#{{hero.id}}</p>
+    </mat-card-content>
+  </mat-card>
+</section>

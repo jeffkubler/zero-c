@@ -1,0 +1,11 @@
+.hero-wrapper {
+    display: flex;
+    justify-content: space-around;
+    & > .hero-card {
+        min-width: 300px;
+
+        & > .hero-card-image {
+            background-size: cover;
+        }
+    }
+}
