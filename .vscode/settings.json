@@ -6,5 +6,6 @@
           "off"
         ]
     }
-  }
+  },
+  "angular.enable-experimental-ivy-prompt": false
 }

@@ -11,6 +11,10 @@
             "name": "Debug API",
             "sourceMaps": true,
             "port": 7777,
+            "skipFiles": [
+                "${workspaceFolder}/node_modules/**/*.js",
+                "<node_internals>/**/*.js"
+              ]
           }
     ]
 }
