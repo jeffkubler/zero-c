@@ -179,7 +179,6 @@
           "builder": "@nrwl/node:execute",
           "options": {
             "buildTarget": "api:build",
-            "inspect": true,
             "port": 7777
           }
         },
