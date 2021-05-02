@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { env } from "../environments/environment";
-import { DEFAULT_USER, LoginResp, UserModel } from '@zeroc/api';
+import { DEFAULT_USER, LoginReq, LoginResp, UserModel } from '@zeroc/api';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class AuthService {
 
   async login(username: string, password: string) {
     const url = `${env.api}/${this.endpoint}`;
-    const body = { username, password };
+    const body: LoginReq = { username, password };
 
     try {
       const resp = await this.http.post<LoginResp>(url, body).toPromise();
