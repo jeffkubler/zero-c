@@ -2,7 +2,7 @@ import { AfterViewInit, Directive, ElementRef } from '@angular/core';
 
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
-  selector: '[autoFocus]'
+  selector: '[zcAutoFocus]'
 })
 export class AutoFocusDirective implements AfterViewInit {
 

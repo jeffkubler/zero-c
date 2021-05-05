@@ -3,14 +3,14 @@
     <mat-card-content>
 
       <mat-form-field>
-        <input autoFocus matInput formControlName="username" placeholder="User Name">
+        <input zcAutoFocus matInput formControlName="username" placeholder="User Name">
       </mat-form-field>
 
       <mat-form-field>
         <input matInput type="password" formControlName="password" placeholder="Password">
       </mat-form-field>
       <mat-card-actions fxLayout fxLayoutAlign="end">
-        <button type="submit" mat-raised-button [disabled]="loginForm.invalid">Log in</button>
+        <button type="submit" mat-raised-button [disabled]="loginForm.invalid && loginForm.touched">Log in</button>
       </mat-card-actions>
     </mat-card-content>
   </form>

@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@zeroc/api": ["libs/api-interfaces/src/index.ts"]
+      "@zeroc/api": ["libs/api-interfaces/src/index.ts"],
+      "@zeroc/schema": ["libs/database/src/index.ts"]
     }
   },
   "angularCompilerOptions": {

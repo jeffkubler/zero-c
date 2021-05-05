@@ -5,7 +5,7 @@ export const LOGIN_ANIMATIONS = [
     // state('in', style({ transform: 'translateX(0)' })),
     transition(':enter', [
       style({ transform: 'translateY(-100%)' }),
-      animate('0.2s ease-in')
+      animate('0.25s ease-in')
     ]),
     transition(':leave', [
       style({ transform: 'translateY(100%)' }),

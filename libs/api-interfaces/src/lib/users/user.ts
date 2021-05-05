@@ -1,4 +1,4 @@
-import { UserEntity } from '../entities/user.entity';
+import { UserEntity } from '@zeroc/schema';
 
 export type UserModel = Omit<UserEntity, 'password'>;
 export type LoginReq = Pick<UserEntity, 'username' | 'password'>
