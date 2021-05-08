@@ -16,14 +16,12 @@ type LoginForm = Omit<FormGroup, 'value' | 'controls'> & { value: LoginReq, cont
   animations: LOGIN_ANIMATIONS,
 })
 export class LoginComponent implements OnInit {
-  public loginForm = this.fb.group({
+  public loginFormGroup = this.fb.group({
     username: ['', [Validators.required]],
     password: ['', [Validators.required]],
   } as LoginControls);
 
-  public get typedForm(): LoginForm {
-    return this.loginForm as unknown as LoginForm;
-  }
+  public get loginForm(): LoginForm { return this.loginFormGroup as unknown as LoginForm; }
 
   constructor(
     private fb: FormBuilder,
@@ -38,7 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   async onSubmit() {
-    const form = this.typedForm;
+    const form = this.loginForm
 
     const result = await this.authService.login(form.value.username, form.value.password);
     if (!result) {

@@ -7,18 +7,23 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-
-// eslint-disable-next-line @typescript-eslint/no-namespace
-declare namespace Cypress {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  interface Chainable<Subject> {
-    login(email: string, password: string): void;
+import { getUsername, getPassword, getForm } from './app.po';
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace Cypress {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    interface Chainable<Subject> {
+      login(email: string, password: string): void;
+    }
   }
 }
 //
 // -- This is a parent command --
 Cypress.Commands.add('login', (email, password) => {
   console.log('Custom command example: Login', email, password);
+  getUsername().type(email).should('have.value', email);
+  getPassword().type(password).should('have.value', password);
+  getForm().submit( { timeout: 400000 });
 });
 //
 // -- This is a child command --

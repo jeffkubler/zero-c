@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
 
+/**
+ * A generated sidenav component
+ */ 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',

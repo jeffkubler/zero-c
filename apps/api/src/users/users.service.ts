@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UserEntity } from '@zeroc/api';
+import { UserEntity } from '@zeroc/schema';
 import { InjectMysql, Mysql } from 'mysql2-nestjs';
 
 @Injectable()

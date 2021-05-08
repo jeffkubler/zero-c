@@ -9,7 +9,7 @@ async function bootstrap() {
   app.setGlobalPrefix(globalPrefix);
   app.use(helmet());
   app.enableCors({
-    origin: 'http://localhost:4200',
+    origin: ['http://localhost:4200', 'http://localhost:4201'],
     methods: ['GET', 'PUSH', 'POST', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   });

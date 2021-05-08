@@ -1,13 +1,16 @@
 <mat-card @flyInOut>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <span></span>
+  <form [formGroup]="loginFormGroup" (ngSubmit)="onSubmit()" id="login_form">
     <mat-card-content>
 
       <mat-form-field>
-        <input zcAutoFocus matInput formControlName="username" placeholder="User Name">
+        <input zcAutoFocus matInput formControlName="username" placeholder="User Name" id="username_input">
+        <mat-error *ngIf="loginForm.controls.username.errors.required" data-username>User name is required</mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput type="password" formControlName="password" placeholder="Password">
+        <input matInput type="password" formControlName="password" placeholder="Password" id="password_input">
+        <mat-error *ngIf="loginForm.controls.username.errors.required" data-password>Password is required</mat-error>
       </mat-form-field>
       <mat-card-actions fxLayout fxLayoutAlign="end">
         <button type="submit" mat-raised-button [disabled]="loginForm.invalid && loginForm.touched">Log in</button>
