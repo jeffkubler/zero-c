@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeroComponent } from './hero/hero.component';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule, Routes } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HeroComponent } from './hero/hero.component';
 
 const routes: Routes = [
   {
