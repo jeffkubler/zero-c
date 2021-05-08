@@ -15,6 +15,7 @@
     "zeroapp": { "tags": [] },
     "zeroapp-e2e": { "tags": [], "implicitDependencies": ["zeroapp"] },
     "api": { "tags": [] },
-    "api-interfaces": { "tags": [] }
+    "api-interfaces": { "tags": [] },
+    "database": { "tags": [] }
   }
 }
