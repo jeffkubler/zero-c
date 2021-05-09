@@ -1,3 +1,5 @@
+import { getForm, getPassword, getPasswordError, getUserError, getUsername } from "../../support/login.po";
+
 
 describe('/login', () => {
   beforeEach(() => {
@@ -5,25 +7,26 @@ describe('/login', () => {
   })
   
   it ('focuses the username input', () => {
-    cy.get('#username_input').should('be.focused');
-    cy.debug();
+    getUsername().should('be.focused');
   })
 
   it ('requires username', () => {
-    cy.get('#username_input').focus().blur();
-    cy.get('mat-error[data-username]').should('exist').and('have.text', 'User name is required');
-    cy.get('form').contains('Log in').should('be.disabled');
+    getUsername().focus().blur();
+    getUserError().should('exist').and('have.text', 'User name is required');
+    getForm().contains('Log in').should('be.disabled');
   });
 
   it ('requires password', () => {
-    cy.get('#password_input').focus().blur();
-    cy.get('mat-error[data-password').should('exist').and('have.text', 'Password is required');
-    cy.get('form').contains('Log in').should('be.disabled');
+    getPassword().focus().blur();
+    getPasswordError().should('exist').and('have.text', 'Password is required');
+    getForm().contains('Log in').should('be.disabled');
   })
 
-  // it ('requires password'), () => {
-    
-  // }
+  it ('should authenticate', () => {
+    cy.fixture('user').then((userFixture) => {
+    cy.login(userFixture.username, userFixture.password);
+    })
+  })
 
   // it ('requires valid username and password'), () => {
     
