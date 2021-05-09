@@ -8,7 +8,7 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 import { getGreeting } from './app.po';
-import { getForm, getPassword, getUsername } from './login.po';
+import { getForm, getPasswordInput, getUsernameInput } from './login.po';
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Cypress {
@@ -21,10 +21,12 @@ declare global {
 //
 // -- This is a parent command --
 Cypress.Commands.add('login', (email, password) => {
-  getUsername().type(email).should('have.value', email);
-  getPassword().type(password).should('have.value', password);
-  getForm().submit( { timeout: 400000 });
-  getGreeting().should('exist').and('contain.text', 'home works');
+  cy.intercept('POST', '/api/auth/login').as('postLogin');
+  getUsernameInput().type(email).should('have.value', email);
+  getPasswordInput().type(password).should('have.value', password);
+  //getForm().submit( { timeout: 30000 }).should('not.exist');
+  getForm().submit().wait('@postLogin');
+  getGreeting().should('be.visible').and('contain.text', 'home works');
 });
 //
 // -- This is a child command --

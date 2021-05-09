@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 
     const result = await this.authService.login(form.value.username, form.value.password);
     if (!result) {
-      this.snackbar.open('Unable to authenticate', 'X', { duration: 3000 });
+      this.snackbar.open('Unable to authenticate', 'X', { duration: 30000 });
     }
     this.router.navigateByUrl('/home');
   }

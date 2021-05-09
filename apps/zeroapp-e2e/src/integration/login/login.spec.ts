@@ -1,4 +1,5 @@
-import { getForm, getPassword, getPasswordError, getUserError, getUsername } from "../../support/login.po";
+import { getSnackbar } from "../../support/app.po";
+import { getForm, getPasswordInput, getPasswordError, getUserError, getUsernameInput } from "../../support/login.po";
 
 
 describe('/login', () => {
@@ -7,19 +8,28 @@ describe('/login', () => {
   })
   
   it ('focuses the username input', () => {
-    getUsername().should('be.focused');
+    getUsernameInput().should('be.focused');
   })
 
   it ('requires username', () => {
-    getUsername().focus().blur();
-    getUserError().should('exist').and('have.text', 'User name is required');
+    getUsernameInput().focus().blur();
+    getUserError().should('be.visible').and('have.text', 'User name is required');
     getForm().contains('Log in').should('be.disabled');
-  });
+  })
 
   it ('requires password', () => {
-    getPassword().focus().blur();
-    getPasswordError().should('exist').and('have.text', 'Password is required');
+    getPasswordInput().focus().blur();
+    getPasswordError().should('be.visible').and('have.text', 'Password is required');
     getForm().contains('Log in').should('be.disabled');
+  })
+
+  it ('should not authenticate', () => {
+    const fakeUser = { username: 'not a user', pw: 'not a password'};
+    cy.intercept('POST', 'api/auth/login').as('postLogin');
+    getUsernameInput().type(fakeUser.username).should('have.value', fakeUser.username);
+    getPasswordInput().type(fakeUser.pw).should('have.value', fakeUser.pw);
+    getForm().submit().wait('@postLogin');
+    getSnackbar().contains('Unable to authenticate').should('be.visible');
   })
 
   it ('should authenticate', () => {
