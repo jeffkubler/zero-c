@@ -1,5 +1,5 @@
 import { getSnackbar } from "../../support/app.po";
-import { getForm, getPasswordInput, getPasswordError, getUserError, getUsernameInput } from "../../support/login.po";
+import { getForm, getPasswordInput, getPasswordError, getUserError, getUsernameInput, getSubmitButton } from "../../support/login.po";
 
 
 describe('/login', () => {
@@ -28,13 +28,13 @@ describe('/login', () => {
     cy.intercept('POST', 'api/auth/login').as('postLogin');
     getUsernameInput().type(fakeUser.username).should('have.value', fakeUser.username);
     getPasswordInput().type(fakeUser.pw).should('have.value', fakeUser.pw);
-    getForm().submit().wait('@postLogin');
+    getSubmitButton().click().wait('@postLogin');
     getSnackbar().contains('Unable to authenticate').should('be.visible');
   })
 
-  it ('should authenticate', () => {
+  it('should authenticate', () => {
     cy.fixture('user').then((userFixture) => {
-    cy.login(userFixture.username, userFixture.password);
+      cy.login(userFixture.username, userFixture.password);
     })
   })
 
